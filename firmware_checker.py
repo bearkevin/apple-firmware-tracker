@@ -1,5 +1,7 @@
+import json
 import logging
 import os
+from dataclasses import asdict
 from typing import Optional
 import plistlib
 import requests
@@ -15,6 +17,7 @@ RSS_FILE = "firmware_rss.xml"
 LOG_DIR = "log"
 UPDATES_DIR = "updates"
 SKIPPED_LOG = os.path.join(LOG_DIR, "skipped_devices.log")
+EMAIL_UPDATES_FILE = os.path.join(LOG_DIR, "firmware_updates.json")
 
 
 def fetch_and_parse_plist(url: str) -> Optional[dict]:
@@ -200,6 +203,8 @@ def update_rss_feed(rss_path: str, updated_devices: list[AppleDevice]):
 def main():
     """Main function to run a single firmware check and update local files."""
     os.makedirs(LOG_DIR, exist_ok=True)
+    if os.path.exists(EMAIL_UPDATES_FILE):
+        os.remove(EMAIL_UPDATES_FILE)
 
     # Configure logging
     logging.basicConfig(
@@ -257,6 +262,9 @@ def main():
         logging.info("URLs saved.")
 
         update_rss_feed(RSS_FILE, updated_devices)
+        # Keep this run's devices separate from the cumulative daily attachment.
+        with open(EMAIL_UPDATES_FILE, 'w', encoding='utf-8') as f:
+            json.dump([asdict(device) for device in updated_devices], f, ensure_ascii=False)
     else:
         logging.info("No updates found.")
 
