@@ -3,8 +3,9 @@ A tool for automatically monitoring URLs for Apple Product firmware.
 
 ## Feature
 * Support iPhone / iPad / iPod / HomePod mini
-* Automatic polling every 15 minutes, Tuesday–Saturday 00:30–07:45 Beijing time
-  (UTC Monday–Friday 16:30–23:45), when Apple usually publishes firmware
+* Automatic polling every 15 minutes, Tuesday–Saturday 00:37–07:52 Beijing time
+  (UTC Monday–Friday 16:37–23:52), when Apple usually publishes firmware. Minutes are
+  offset from :00/:15/:30/:45, where GitHub most often delays or drops scheduled runs
 * Uses SQLite to store firmware information, including Device Code / URL / SHA1
 * Automatically generates RSS feeds for easy subscription and download via Download Tools.
   The feed keeps the firmware files from the three most recent update runs (no item cap),
