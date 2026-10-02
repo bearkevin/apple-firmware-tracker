@@ -112,6 +112,23 @@ class FirmwareEmailTests(unittest.TestCase):
         self.assertEqual(device_name("iPhone12,8", {"iPhone12,8": "iPhone SE (2020)"}),
                          "iPhone SE (2020)")
 
+    def test_non_ipad_carrier_and_region_variants_are_dropped(self):
+        cases = {
+            "iPhone 7 (GSM)": "iPhone 7", "iPhone 7 (Global)": "iPhone 7",
+            "iPhone XS Max (China)": "iPhone XS Max", "iPhone 4 (CDMA)": "iPhone 4",
+            "iPhone 18 Pro Max (U.S.)": "iPhone 18 Pro Max",
+            "iPhone 4 (GSM / 2012)": "iPhone 4 (GSM / 2012)",
+            "iPhone SE (3rd generation)": "iPhone SE (3rd generation)",
+            "HomePod (2nd generation)": "HomePod (2nd generation)",
+        }
+        for name, expected in cases.items():
+            with self.subTest(name=name):
+                self.assertEqual(device_name("iPhoneTest,1", {"iPhoneTest,1": name}), expected)
+        self.names.update({"iPhone9,1": "iPhone 7 (Global)", "iPhone9,3": "iPhone 7 (GSM)"})
+        _, text = self.render([self.device(), self.device("iPhone9,3")])
+        self.assertIn("• iPhone 7\n", text)
+        self.assertNotIn("GSM", text)
+
     def test_cli_generates_only_plain_text_files(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
@@ -171,11 +188,15 @@ class FirmwareEmailTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             snapshot = root / "firmware_updates.json"
-            first = AppleDevice("iPhone9,1", "19H421", "old", "https://example.com/old.ipsw", "15.8.7")
-            second = AppleDevice("iPad7,5", "21H461", "new", "https://example.com/new.ipsw", "17.7.11")
+            attachment_file = root / "log" / "update_attachment.txt"
+            first = AppleDevice(hardware_code="iPhone9,1", build_version="19H421", firmware_sha1="old",
+                                firmware_url="https://example.com/old.ipsw", product_version="15.8.7")
+            second = AppleDevice(hardware_code="iPad7,5", build_version="21H461", firmware_sha1="new",
+                                 firmware_url="https://example.com/new.ipsw", product_version="17.7.11")
             settings = {"DB_FILE": str(root / "firmware.db"), "LOG_DIR": str(root / "log"),
                         "UPDATES_DIR": str(root / "updates"), "RSS_FILE": str(root / "rss.xml"),
-                        "EMAIL_UPDATES_FILE": str(snapshot)}
+                        "EMAIL_UPDATES_FILE": str(snapshot),
+                        "UPDATE_ATTACHMENT_FILE": str(attachment_file)}
             with patch.multiple(checker, **settings), \
                     patch.object(checker, "fetch_and_parse_plist", return_value={"valid": True}), \
                     patch.object(checker, "extract_firmware_info") as extract, \
@@ -189,9 +210,11 @@ class FirmwareEmailTests(unittest.TestCase):
                 devices = json.loads(snapshot.read_text(encoding="utf-8"))
                 self.assertEqual([d["hardware_code"] for d in devices], ["iPad7,5"])
                 attachment = next((root / "updates").glob("*_updates.txt"))
+                self.assertEqual(attachment_file.read_text(encoding="utf-8"), str(attachment))
                 self.assertEqual(len(attachment.read_text().splitlines()), 2)
-                checker.main()
+                self.assertEqual(checker.main(), 0)
                 self.assertFalse(snapshot.exists())
+                self.assertFalse(attachment_file.exists())
 
 
 if __name__ == "__main__":

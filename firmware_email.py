@@ -41,23 +41,33 @@ def device_family(code):
     return "其他设备"
 
 
+VARIANTS = {"wifi", "wi-fi", "cellular", "gsm", "cdma", "global", "china", "u.s."}
+
+
 def simplify_ipad_name(name):
     """Keep model details while removing connectivity, region, and storage variants."""
-    variants = {"wifi", "wi-fi", "cellular", "gsm", "cdma", "global", "china"}
-
     def model_details(match):
         details = [part.strip() for part in match.group(1).split(",")]
         return " ".join(part for part in details
-                        if part.casefold() not in variants
+                        if part.casefold() not in VARIANTS
                         and not re.fullmatch(r"\d+\s*(?:GB|TB)(?:\s+Model)?", part, re.I))
 
     return " ".join(re.sub(r"\(([^()]*)\)", model_details, name).split())
 
 
+def simplify_variant_name(name):
+    """Drop parentheses that only name a carrier/region variant, e.g. "iPhone 7 (GSM)"."""
+    def drop_variants(match):
+        parts = [part.strip() for part in re.split(r"[,/]", match.group(1))]
+        return "" if all(part.casefold() in VARIANTS for part in parts) else match.group(0)
+
+    return " ".join(re.sub(r"\(([^()]*)\)", drop_variants, name).split())
+
+
 def device_name(code, names):
     if code in names:
         name = names[code]
-        return simplify_ipad_name(name) if code.startswith("iPad") else name
+        return simplify_ipad_name(name) if code.startswith("iPad") else simplify_variant_name(name)
     logging.warning("Missing device name for %s; update device_names.json", code)
     return f"名称待补充的 {device_family(code)} 设备"
 
