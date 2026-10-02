@@ -143,11 +143,12 @@ def print_statistics(stats: Dict):
         print(f"  {device_type:<12}: {count:>4} devices")
     
     print("\nBy product version (top 10):")
-    for i, (version, count) in enumerate(sorted(
-        stats['by_product_version'].items(), 
-        key=lambda x: x[0], 
+    # Compare versions numerically so 27.0.1 ranks above 9.3.6.
+    for version, count in sorted(
+        stats['by_product_version'].items(),
+        key=lambda x: [int(p) if p.isdigit() else 0 for p in (x[0] or "").split(".")],
         reverse=True
-    )[:10]):
+    )[:10]:
         print(f"  {version:<12}: {count:>4} devices")
     
     print()
