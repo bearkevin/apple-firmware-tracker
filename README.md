@@ -13,6 +13,7 @@ A tool for automatically monitoring URLs for Apple Product firmware.
   so readers that poll less often (e.g. Synology Download Station, daily by default)
   don't miss a run or re-download old files.
 * Sends plain-text email summaries grouped by firmware version/build and device family, using product names instead of hardware identifiers.
+* Query tool for searching and exporting firmware data from the database
 
 ## Email notifications
 
@@ -70,6 +71,7 @@ python3 -m unittest discover -s tests -v
 apple-firmware-tracker/
 ├── firmware_checker.py     # main script: fetch, compare, store, RSS
 ├── firmware_email.py       # builds the plain-text notification email
+├── query_firmware.py       # query tool for database
 ├── device.py               # custom class
 ├── device_names.json       # identifier -> product name catalog
 ├── 设备名称_固件名称.csv     # shared firmware filename aliases (historical resend)
@@ -103,3 +105,54 @@ CREATE TABLE firmware_history (
     detected_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```
+
+## Query Database
+
+Use `query_firmware.py` to search and export firmware data:
+
+### Basic Usage
+
+```bash
+# Show database statistics
+python query_firmware.py --stats
+
+# List all devices
+python query_firmware.py --all
+
+# List first 10 devices
+python query_firmware.py --all --limit 10
+
+# Search by device code (supports partial match)
+python query_firmware.py --device iPhone14
+python query_firmware.py --device iPad
+
+# Search by product version
+python query_firmware.py --version 26.2.1
+
+# Search by build version
+python query_firmware.py --build 23C71
+```
+
+### Export Options
+
+```bash
+# Export to JSON
+python query_firmware.py --all --format json
+
+# Export to CSV
+python query_firmware.py --device iPad --format csv > ipads.csv
+
+# Export specific version to JSON
+python query_firmware.py --version 26.2.1 --format json > firmware_26.2.1.json
+```
+
+### Query Options
+
+- `--all`: List all devices
+- `--device <code>`: Search by device code (supports partial match)
+- `--version <version>`: Search by product version
+- `--build <build>`: Search by build version
+- `--stats`: Show database statistics
+- `--format <table|json|csv>`: Output format (default: table)
+- `--limit <n>`: Limit number of results (only for --all)
+- `--db <path>`: Database file path (default: firmware.db)
