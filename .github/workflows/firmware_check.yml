@@ -21,10 +21,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: '3.11'
 
@@ -92,7 +92,7 @@ jobs:
       # 先提交再发信：提交失败时不发信，下一轮会重新检测并通知，避免重复邮件
       - name: Commit and push if changed
         if: steps.detect_updates.outputs.send_mode == 'auto' && steps.detect_updates.outputs.has_updates == 'true'
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "Automated update firmware data"
           file_pattern: "*.db *.xml updates/*.txt"
@@ -103,7 +103,7 @@ jobs:
         id: send_email
         if: steps.detect_updates.outputs.has_updates == 'true' && steps.build_email.outcome == 'success'
         continue-on-error: true
-        uses: dawidd6/action-send-mail@v6
+        uses: dawidd6/action-send-mail@v22
         with:
           server_address: smtp.mail.me.com
           server_port: 587
