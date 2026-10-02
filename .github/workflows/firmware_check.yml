@@ -1,14 +1,19 @@
 on:
   schedule:
-    # 北京时间周二到周六 00:30-07:59（每 15 分钟）= UTC 16:30-23:45 周一至周五
-    # 注意：单条 cron 无法覆盖北京 08:00 整点（需跨 UTC 午夜），该次检测会由下一轮补上
-    - cron: '30,45 16-23 * * 1-5'
+    # 北京时间周二到周六 00:30-07:45（每 15 分钟）= UTC 周一至周五 16:30-23:45
+    - cron: '30,45 16 * * 1-5'
+    - cron: '*/15 17-23 * * 1-5'
   workflow_dispatch:
     inputs:
       resend_attachment:
         description: "Existing *_updates.txt file to email manually"
         required: false
         type: string
+
+# 避免手动补发与定时检测同时运行导致 push 冲突
+concurrency:
+  group: firmware-check
+  cancel-in-progress: false
 
 jobs:
   check-and-commit:
@@ -57,15 +62,15 @@ jobs:
             exit 0
           fi
 
-          mapfile -t update_files < <(git status --porcelain -- 'updates/*_updates.txt' | awk '{print $2}')
-
-          if [ "${#update_files[@]}" -eq 0 ]; then
+          # firmware_checker.py 仅在检测到 SHA1 变化时写入这两个文件，
+          # 即使当天附件内容没有变化，数据库也会被提交、邮件也会发送。
+          if [ ! -f log/firmware_updates.json ]; then
             echo "has_updates=false" >> "$GITHUB_OUTPUT"
             echo "send_mode=auto" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
-          attachment_path="${update_files[0]}"
+          attachment_path="$(< log/update_attachment.txt)"
 
           echo "has_updates=true" >> "$GITHUB_OUTPUT"
           echo "attachment_path=$attachment_path" >> "$GITHUB_OUTPUT"
@@ -83,6 +88,16 @@ jobs:
           python3 firmware_email.py --attachment "$ATTACHMENT_PATH" --mode "$SEND_MODE"
           echo "subject=$(< log/email/subject.txt)" >> "$GITHUB_OUTPUT"
 
+      # 先提交再发信：提交失败时不发信，下一轮会重新检测并通知，避免重复邮件
+      - name: Commit and push if changed
+        if: steps.detect_updates.outputs.send_mode == 'auto' && steps.detect_updates.outputs.has_updates == 'true'
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Automated update firmware data"
+          file_pattern: "*.db *.xml updates/*.txt"
+          commit_user_name: "Github Actions Bot"
+          commit_user_email: "actions@github.com"
+
       - name: Send update email
         id: send_email
         if: steps.detect_updates.outputs.has_updates == 'true' && steps.build_email.outcome == 'success'
@@ -99,15 +114,6 @@ jobs:
           from: ${{ vars.MAIL_FROM }}
           body: file://log/email/body.txt
           attachments: ${{ steps.detect_updates.outputs.attachment_path }}
-
-      - name: Commit and push if changed
-        if: steps.detect_updates.outputs.send_mode == 'auto' && steps.detect_updates.outputs.has_updates == 'true'
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "Automated update firmware data"
-          file_pattern: "*.db *.xml updates/*.txt"
-          commit_user_name: "Github Actions Bot"
-          commit_user_email: "actions@github.com"
 
       - name: Fail workflow if email notification failed
         if: always() && steps.detect_updates.outputs.has_updates == 'true' && (steps.build_email.outcome == 'failure' || steps.send_email.outcome == 'failure')

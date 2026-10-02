@@ -3,21 +3,29 @@ A tool for automatically monitoring URLs for Apple Product firmware.
 
 ## Feature
 * Support iPhone / iPad / iPod / HomePod mini
-* Automatic polling with a 15-minute interval
+* Automatic polling every 15 minutes, Tuesday–Saturday 00:30–07:45 Beijing time
+  (UTC Monday–Friday 16:30–23:45), when Apple usually publishes firmware
 * Uses SQLite to store firmware information, including Device Code / URL / SHA1
 * Automatically generates RSS feeds for easy subscription and download via Download Tools.
+  The feed keeps the firmware files from the three most recent update runs (no item cap),
+  one item per firmware file. Existing items keep their original `guid`/`link`/`pubDate`,
+  so readers that poll less often (e.g. Synology Download Station, daily by default)
+  don't miss a run or re-download old files.
 * Sends plain-text email summaries grouped by firmware version/build and device family, using product names instead of hardware identifiers.
 
 ## Email notifications
 
 Automatic notifications list only the devices updated in the current check. The attached
-`updates/YYYY-MM-DD_updates.txt` still contains all firmware URLs collected that day.
+`updates/YYYY-MM-DD_updates.txt` (named by Beijing date) still contains all firmware URLs
+collected that day.
 Each version/build has its own section under iPhone, iPad, iPod, or HomePod.
 Each line represents one firmware URL, listing the deduplicated product names that share
 that file (for example, iPhone 12 and iPhone 12 Pro). Different firmware files stay on
 separate lines. iPad names omit connectivity, regional, and storage variants before being
 deduplicated within each file; chip, screen size, and generation remain (for example,
 `iPad mini (A17 Pro, Cellular)` and `iPad mini (A17 Pro, WiFi)` become `iPad mini A17 Pro`).
+Other devices drop carrier/region-only parentheses (`iPhone 7 (GSM)` and `iPhone 7 (Global)`
+become `iPhone 7`), while years and generations such as `iPhone SE (2020)` are kept.
 The subject includes the firmware versions. The email body is plain text only.
 
 The workflow requires secrets `MAIL_SMTP_USERNAME`, `MAIL_SMTP_PASSWORD`, `MAIL_TO`,
@@ -42,8 +50,11 @@ python3 firmware_email.py --mode manual --attachment updates/2026-06-29_updates.
 ```
 
 For automatic notifications, `firmware_checker.py` writes this run's changed devices to
-`log/firmware_updates.json`, then the workflow invokes `firmware_email.py --mode auto`.
-Generated notification files stay under the ignored `log/` directory.
+`log/firmware_updates.json` and the attachment path to `log/update_attachment.txt`; the
+workflow treats their presence as "updates found", commits the data, then invokes
+`firmware_email.py --mode auto` and sends the email. Generated notification files stay under
+the ignored `log/` directory. If the firmware list cannot be fetched or parsed, the checker
+exits non-zero so the workflow run shows as failed.
 
 Run the regression tests:
 
@@ -56,15 +67,18 @@ python3 -m unittest discover -s tests -v
 * Script Structure
 ```
 apple-firmware-tracker/
-├── firmware_checker.py     # main script
+├── firmware_checker.py     # main script: fetch, compare, store, RSS
+├── firmware_email.py       # builds the plain-text notification email
 ├── device.py               # custom class
-├── requirements.txt        
-├── firmware.db            # SQLite database
-├── firmware_rss.xml       # RSS feed
-├── *.txt                  # URL history
-└── .github/workflows/     # GitHub Actions
-    ├── firmware_check.yml
-    └── purge_jsdelivr_cache.yml
+├── device_names.json       # identifier -> product name catalog
+├── 设备名称_固件名称.csv     # shared firmware filename aliases (historical resend)
+├── requirements.txt
+├── firmware.db             # SQLite database
+├── firmware_rss.xml        # RSS feed
+├── updates/                # daily URL history (YYYY-MM-DD_updates.txt)
+├── tests/                  # unit tests
+└── .github/workflows/      # GitHub Actions
+    └── firmware_check.yml
 ```
 
 * Database Structure
@@ -76,5 +90,15 @@ CREATE TABLE firmware (
     firmware_sha1 TEXT,
     firmware_url TEXT,
     last_checked TIMESTAMP
+);
+
+CREATE TABLE firmware_history (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    hardware_code TEXT NOT NULL,
+    product_version TEXT,
+    build_version TEXT,
+    firmware_sha1 TEXT,
+    firmware_url TEXT,
+    detected_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```
