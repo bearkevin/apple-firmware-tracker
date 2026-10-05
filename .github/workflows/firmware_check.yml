@@ -111,7 +111,9 @@ jobs:
           username: ${{ secrets.MAIL_SMTP_USERNAME }}
           password: ${{ secrets.MAIL_SMTP_PASSWORD }}
           subject: ${{ steps.build_email.outputs.subject }}
+          # 主收件人只放一个地址；其余收件人放在 MAIL_BCC（逗号分隔），彼此看不到对方地址
           to: ${{ secrets.MAIL_TO }}
+          bcc: ${{ secrets.MAIL_BCC }}
           from: ${{ vars.MAIL_FROM }}
           body: file://log/email/body.txt
           attachments: ${{ steps.detect_updates.outputs.attachment_path }}

@@ -31,9 +31,12 @@ become `iPhone 7`), while years and generations such as `iPhone SE (2020)` are k
 The subject includes the firmware versions. The email body is plain text only.
 
 The workflow requires secrets `MAIL_SMTP_USERNAME`, `MAIL_SMTP_PASSWORD`, `MAIL_TO`,
-and the repository variable `MAIL_FROM`. Use the `resend_attachment` workflow input
-(e.g. `updates/2026-06-29_updates.txt`) to resend a historical attachment with a matching
-summary. Email generation or delivery failures still allow firmware data to be committed,
+and the repository variable `MAIL_FROM`. `MAIL_TO` is the primary (visible) recipient.
+Put any other recipients in the optional secret `MAIL_BCC` as a comma-separated list
+(e.g. `a@example.com,b@example.com`); they receive the email as blind copies and cannot
+see each other's addresses. Leave `MAIL_BCC` unset to send to `MAIL_TO` only.
+Use the `resend_attachment` workflow input (e.g. `updates/2026-06-29_updates.txt`) to resend
+a historical attachment with a matching summary. Email generation or delivery failures still allow firmware data to be committed,
 then mark the workflow as failed.
 
 `device_names.json` contains an offline identifier-to-product-name catalog sourced from
