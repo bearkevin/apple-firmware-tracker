@@ -132,7 +132,7 @@ def load_historical_devices(attachment, catalog_path=FIRMWARE_CATALOG, db_path=F
 
 def file_line(codes, names, full=False):
     """One firmware file's device names; full=True keeps the original variant details."""
-    labels = {names.get(code, device_name(code, names)) if full else device_name(code, names)
+    labels = {names[code] if full and code in names else device_name(code, names)
               for code in codes}
     return "、".join(sorted(labels, key=natural_key))
 

@@ -14,6 +14,7 @@ from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
+from xml.parsers.expat import ExpatError
 from device import AppleDevice
 
 # --- Constants ---
@@ -44,7 +45,8 @@ def fetch_and_parse_plist(url: str) -> Optional[dict]:
     except requests.RequestException as e:
         logging.error(f"Error fetching data: {e}")
         return None
-    except plistlib.InvalidFileException as e:
+    except (ValueError, ExpatError) as e:
+        # InvalidFileException is a ValueError; a truncated XML plist raises ExpatError.
         logging.error(f"Error parsing plist data: {e}")
         return None
 
@@ -56,6 +58,8 @@ def find_latest_version_node(data: dict) -> Optional[dict]:
 
 def extract_firmware_info(full_data: dict) -> list[AppleDevice]:
     devices = []
+    if not isinstance(full_data, dict):
+        return []
     by_version_node = full_data.get("MobileDeviceSoftwareVersionsByVersion")
     if not by_version_node:
         return []
@@ -71,6 +75,8 @@ def extract_firmware_info(full_data: dict) -> list[AppleDevice]:
             continue
         try:
             restore_info = info["Unknown"]["Universal"]["Restore"]
+            if not isinstance(restore_info, dict):
+                raise TypeError(type(restore_info).__name__)
         except (KeyError, TypeError):
             logging.debug("Skipped %s: unexpected plist structure", code)
             _append_skipped_log(code)

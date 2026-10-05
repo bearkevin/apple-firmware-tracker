@@ -56,6 +56,16 @@ class ExtractTests(unittest.TestCase):
         self.assertIn("iPod1,1", skipped)
         self.assertNotIn("iPhone1,1", skipped)
 
+    def test_non_dict_restore_node_is_skipped(self):
+        plist = {"MobileDeviceSoftwareVersionsByVersion": {"1": {"MobileDeviceSoftwareVersions": {
+            "iPhone9,1": {"Unknown": {"Universal": {"Restore": "unexpected"}}}}}}}
+        with tempfile.TemporaryDirectory() as temp, \
+                patch.object(checker, "LOG_DIR", temp), \
+                patch.object(checker, "SKIPPED_LOG", str(Path(temp) / "skipped.log")):
+            self.assertEqual(checker.extract_firmware_info(plist), [])
+            self.assertIn("iPhone9,1", (Path(temp) / "skipped.log").read_text())
+        self.assertEqual(checker.extract_firmware_info(["not", "a", "dict"]), [])
+
     def test_missing_version_nodes_return_nothing(self):
         self.assertEqual(checker.extract_firmware_info({}), [])
         self.assertEqual(checker.extract_firmware_info(
@@ -138,6 +148,15 @@ class StorageTests(unittest.TestCase):
                 self.assertEqual(conn.execute("SELECT COUNT(*) FROM firmware_history").fetchone()[0], 3)
                 checked = conn.execute("SELECT last_checked FROM firmware LIMIT 1").fetchone()[0]
             self.assertTrue(checked.endswith("+00:00"))
+
+
+class FetchTests(unittest.TestCase):
+    def test_malformed_plist_returns_none(self):
+        for content in (b"garbage", b"<?xml version='1.0'?><plist><dict><key>a</key>"):
+            response = type("Response", (), {"content": content, "raise_for_status": lambda self: None})()
+            with patch.object(checker.requests.Session, "get", return_value=response), \
+                    self.assertLogs(level="ERROR"):
+                self.assertIsNone(checker.fetch_and_parse_plist("https://example.com/version"))
 
 
 class MainTests(unittest.TestCase):

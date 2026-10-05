@@ -8,15 +8,19 @@ import csv
 import json
 import sqlite3
 import sys
-from typing import List, Dict
+from pathlib import Path
+from typing import Dict, List, Optional
 
 DB_FILE = "firmware.db"
 
 
 def connect_db(db_path: str = DB_FILE) -> sqlite3.Connection:
-    """Connect to the firmware database."""
+    """Open the firmware database read-only, so a mistyped path doesn't create an empty file."""
+    if not Path(db_path).is_file():
+        print(f"Database file not found: {db_path}", file=sys.stderr)
+        sys.exit(1)
     try:
-        conn = sqlite3.connect(db_path)
+        conn = sqlite3.connect(f"{Path(db_path).resolve().as_uri()}?mode=ro", uri=True)
         conn.row_factory = sqlite3.Row
         return conn
     except sqlite3.Error as e:
@@ -24,44 +28,28 @@ def connect_db(db_path: str = DB_FILE) -> sqlite3.Connection:
         sys.exit(1)
 
 
-def list_all_devices(conn: sqlite3.Connection, limit: int = None) -> List[Dict]:
-    """List all devices in the database."""
-    cursor = conn.cursor()
-    if limit:
-        cursor.execute("SELECT * FROM firmware ORDER BY hardware_code LIMIT ?", (limit,))
-    else:
-        cursor.execute("SELECT * FROM firmware ORDER BY hardware_code")
-    return [dict(row) for row in cursor.fetchall()]
-
-
-def search_by_device_code(conn: sqlite3.Connection, device_code: str) -> List[Dict]:
-    """Search devices by hardware code (supports partial match)."""
-    cursor = conn.cursor()
-    cursor.execute(
-        "SELECT * FROM firmware WHERE hardware_code LIKE ? ORDER BY hardware_code",
-        (f"%{device_code}%",)
-    )
-    return [dict(row) for row in cursor.fetchall()]
-
-
-def search_by_version(conn: sqlite3.Connection, version: str) -> List[Dict]:
-    """Search devices by product version."""
-    cursor = conn.cursor()
-    cursor.execute(
-        "SELECT * FROM firmware WHERE product_version = ? ORDER BY hardware_code",
-        (version,)
-    )
-    return [dict(row) for row in cursor.fetchall()]
-
-
-def search_by_build(conn: sqlite3.Connection, build: str) -> List[Dict]:
-    """Search devices by build version."""
-    cursor = conn.cursor()
-    cursor.execute(
-        "SELECT * FROM firmware WHERE build_version = ? ORDER BY hardware_code",
-        (build,)
-    )
-    return [dict(row) for row in cursor.fetchall()]
+def search_devices(conn: sqlite3.Connection, device_code: Optional[str] = None,
+                   version: Optional[str] = None, build: Optional[str] = None,
+                   limit: Optional[int] = None) -> List[Dict]:
+    """Return devices matching every given filter; device_code is a partial match."""
+    clauses, params = [], []
+    if device_code:
+        clauses.append("hardware_code LIKE ?")
+        params.append(f"%{device_code}%")
+    if version:
+        clauses.append("product_version = ?")
+        params.append(version)
+    if build:
+        clauses.append("build_version = ?")
+        params.append(build)
+    query = "SELECT * FROM firmware"
+    if clauses:
+        query += " WHERE " + " AND ".join(clauses)
+    query += " ORDER BY hardware_code"
+    if limit is not None:
+        query += " LIMIT ?"
+        params.append(limit)
+    return [dict(row) for row in conn.execute(query, params)]
 
 
 def get_statistics(conn: sqlite3.Connection) -> Dict:
@@ -119,17 +107,17 @@ def print_devices(devices: List[Dict], output_format: str = "table"):
         writer.writerows(devices)
     else:  # table format
         print(f"\nFound {len(devices)} device(s):\n")
-        print("-" * 120)
-        print(f"{'Hardware Code':<25} {'Version':<12} {'Build':<15} {'Last Checked':<20}")
-        print("-" * 120)
+        print("-" * 80)
+        print(f"{'Hardware Code':<25} {'Version':<12} {'Build':<15} {'Last Checked':<26}")
+        print("-" * 80)
         for device in devices:
             print(
                 f"{device['hardware_code']:<25} "
-                f"{device['product_version']:<12} "
-                f"{device['build_version']:<15} "
-                f"{str(device['last_checked']):<20}"
+                f"{device['product_version'] or '-':<12} "
+                f"{device['build_version'] or '-':<15} "
+                f"{device['last_checked'] or '-':<26}"
             )
-        print("-" * 120)
+        print("-" * 80)
         print(f"Total: {len(devices)} device(s)\n")
 
 
@@ -149,7 +137,7 @@ def print_statistics(stats: Dict):
         key=lambda x: [int(p) if p.isdigit() else 0 for p in (x[0] or "").split(".")],
         reverse=True
     )[:10]:
-        print(f"  {version:<12}: {count:>4} devices")
+        print(f"  {version or 'unknown':<12}: {count:>4} devices")
     
     print()
 
@@ -171,6 +159,9 @@ Examples:
   
   # Search by build version
   python query_firmware.py --build 22C150
+
+  # Combine filters (all must match)
+  python query_firmware.py --device iPad --version 18.2
   
   # Show database statistics
   python query_firmware.py --stats
@@ -217,7 +208,7 @@ Examples:
     parser.add_argument(
         "--limit", 
         type=int, 
-        help="Limit number of results (only for --all)"
+        help="Limit number of results"
     )
     parser.add_argument(
         "--db", 
@@ -237,19 +228,9 @@ Examples:
     
     try:
         if args.stats:
-            stats = get_statistics(conn)
-            print_statistics(stats)
-        elif args.all:
-            devices = list_all_devices(conn, args.limit)
-            print_devices(devices, args.format)
-        elif args.device:
-            devices = search_by_device_code(conn, args.device)
-            print_devices(devices, args.format)
-        elif args.version:
-            devices = search_by_version(conn, args.version)
-            print_devices(devices, args.format)
-        elif args.build:
-            devices = search_by_build(conn, args.build)
+            print_statistics(get_statistics(conn))
+        else:
+            devices = search_devices(conn, args.device, args.version, args.build, args.limit)
             print_devices(devices, args.format)
     finally:
         conn.close()

@@ -5,3 +5,6 @@ __pycache__/
 # Runtime logs
 log/
 *.log
+
+# Local tooling
+.codegraph/

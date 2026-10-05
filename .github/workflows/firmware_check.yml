@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       resend_attachment:
-        description: "Existing *_updates.txt file to email manually"
+        description: "Existing updates/*_updates.txt file to email manually"
         required: false
         type: string
 
@@ -44,10 +44,14 @@ jobs:
         run: |
           if [ -n "$MANUAL_ATTACHMENT" ]; then
             case "$MANUAL_ATTACHMENT" in
-              *_updates.txt)
+              *..*)
+                echo "Manual attachment path must not contain '..'"
+                exit 1
+                ;;
+              updates/*_updates.txt)
                 ;;
               *)
-                echo "Manual attachment must match *_updates.txt"
+                echo "Manual attachment must match updates/*_updates.txt"
                 exit 1
                 ;;
             esac

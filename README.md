@@ -38,7 +38,7 @@ and the repository variable `MAIL_FROM`. `MAIL_TO` is the primary (visible) reci
 Put any other recipients in the optional secret `MAIL_BCC` as a comma-separated list
 (e.g. `a@example.com,b@example.com`); they receive the email as blind copies and cannot
 see each other's addresses. Leave `MAIL_BCC` unset to send to `MAIL_TO` only.
-Use the `resend_attachment` workflow input (e.g. `updates/2026-06-29_updates.txt`) to resend
+Use the `resend_attachment` workflow input (a path under `updates/`, e.g. `updates/2026-06-29_updates.txt`) to resend
 a historical attachment with a matching summary. Email generation or delivery failures still allow firmware data to be committed,
 then mark the workflow as failed.
 
@@ -67,7 +67,7 @@ workflow treats their presence as "updates found", commits the data, then invoke
 the ignored `log/` directory. If the firmware list cannot be fetched or parsed, the checker
 exits non-zero so the workflow run shows as failed.
 
-Run the regression tests:
+Run the regression tests (the `Tests` workflow also runs them on pushes that touch code):
 
 ```bash
 python3 -m unittest discover -s tests -v
@@ -90,7 +90,8 @@ apple-firmware-tracker/
 ├── updates/                # daily URL history (YYYY-MM-DD_updates.txt)
 ├── tests/                  # unit tests
 └── .github/workflows/      # GitHub Actions
-    └── firmware_check.yml
+    ├── firmware_check.yml  # scheduled check, commit, email
+    └── tests.yml           # unit tests
 ```
 
 * Database Structure
@@ -140,6 +141,9 @@ python query_firmware.py --version 26.2.1
 
 # Search by build version
 python query_firmware.py --build 23C71
+
+# Combine filters (all must match)
+python query_firmware.py --device iPad --version 26.2.1 --limit 5
 ```
 
 ### Export Options
@@ -163,5 +167,7 @@ python query_firmware.py --version 26.2.1 --format json > firmware_26.2.1.json
 - `--build <build>`: Search by build version
 - `--stats`: Show database statistics
 - `--format <table|json|csv>`: Output format (default: table)
-- `--limit <n>`: Limit number of results (only for --all)
-- `--db <path>`: Database file path (default: firmware.db)
+- `--limit <n>`: Limit number of results
+- `--db <path>`: Database file path (default: firmware.db); opened read-only, and a missing file is reported instead of being created
+
+`--device`, `--version` and `--build` can be combined; a device must match all of them.

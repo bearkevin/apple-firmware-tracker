@@ -1,0 +1,30 @@
+name: Tests
+
+on:
+  push:
+    paths:
+      - "**.py"
+      - "device_names.json"
+      - "设备名称_固件名称.csv"
+      - "requirements.txt"
+      - ".github/workflows/tests.yml"
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  unittest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests
+        run: python3 -m unittest discover -s tests -v
