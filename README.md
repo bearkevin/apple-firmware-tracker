@@ -28,6 +28,9 @@ deduplicated within each file; chip, screen size, and generation remain (for exa
 `iPad mini (A17 Pro, Cellular)` and `iPad mini (A17 Pro, WiFi)` become `iPad mini A17 Pro`).
 Other devices drop carrier/region-only parentheses (`iPhone 7 (GSM)` and `iPhone 7 (Global)`
 become `iPhone 7`), while years and generations such as `iPhone SE (2020)` are kept.
+If two firmware files under the same version and device family would read identically after
+simplification (e.g. `iPad (A16, WiFi)` and `iPad (A16, Cellular)` ship as separate files),
+those lines keep their full names so they stay distinguishable.
 The subject includes the firmware versions. The email body is plain text only.
 
 The workflow requires secrets `MAIL_SMTP_USERNAME`, `MAIL_SMTP_PASSWORD`, `MAIL_TO`,
@@ -42,8 +45,11 @@ then mark the workflow as failed.
 `device_names.json` contains an offline identifier-to-product-name catalog sourced from
 <https://api.ipsw.me/v4/devices>. Update it when adding new devices. Unknown names are
 shown as “名称待补充” and logged, rather than presented as device codes.
-`设备名称_固件名称.csv` supplies shared firmware filename aliases for historical attachments;
-keep both mapping files in the repository. Historical versions/builds come from the selected
+Historical attachments resolve each URL to devices from `firmware.db` (the exact URL as the
+checker recorded it in `firmware_history`/`firmware`). Only URLs the database has never seen
+fall back to `设备名称_固件名称.csv`, which supplies shared firmware filename aliases; keep both
+mapping files in the repository. The database lookup matters for shared filenames such as
+`iPad_Pro_A12X_A12Z`, which cover different models in different OS versions. Historical versions/builds come from the selected
 attachment, not the current database. Ambiguous or unknown historical aliases are logged
 and displayed as unresolved names.
 

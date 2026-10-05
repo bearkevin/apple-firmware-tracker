@@ -5,6 +5,8 @@ import csv
 import json
 import logging
 import re
+import sqlite3
+from contextlib import closing
 from collections import defaultdict
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
@@ -12,6 +14,7 @@ from urllib.parse import unquote, urlsplit
 ROOT = Path(__file__).resolve().parent
 DEVICE_NAMES = ROOT / "device_names.json"
 FIRMWARE_CATALOG = ROOT / "设备名称_固件名称.csv"
+FIRMWARE_DB = ROOT / "firmware.db"
 
 
 def natural_key(value):
@@ -72,8 +75,30 @@ def device_name(code, names):
     return f"名称待补充的 {device_family(code)} 设备"
 
 
-def load_historical_devices(attachment, catalog_path=FIRMWARE_CATALOG):
-    """Resolve old URL-only attachments without borrowing today's firmware version."""
+def recorded_devices(db_path):
+    """Map each firmware URL to the devices the checker recorded for it."""
+    devices = defaultdict(set)
+    if not Path(db_path).is_file():
+        return devices
+    try:
+        with closing(sqlite3.connect(db_path)) as conn:
+            for url, code in conn.execute(
+                    "SELECT firmware_url, hardware_code FROM firmware_history "
+                    "UNION SELECT firmware_url, hardware_code FROM firmware"):
+                if url:
+                    devices[url].add(code)
+    except sqlite3.Error as e:
+        logging.warning("Cannot read firmware database %s: %s", db_path, e)
+    return devices
+
+
+def load_historical_devices(attachment, catalog_path=FIRMWARE_CATALOG, db_path=FIRMWARE_DB):
+    """Resolve old URL-only attachments without borrowing today's firmware version.
+
+    Exact URL matches recorded by the checker win; the filename catalog is only a fallback
+    because a shared filename (e.g. iPad_Pro_A12X_A12Z) covers different models per version.
+    """
+    recorded = recorded_devices(db_path)
     aliases = defaultdict(list)
     with Path(catalog_path).open(encoding="utf-8-sig", newline="") as source:
         for row in csv.DictReader(source):
@@ -86,8 +111,10 @@ def load_historical_devices(attachment, catalog_path=FIRMWARE_CATALOG):
         if not url:
             continue
         family, version, build = firmware_parts(url)
-        codes = re.findall(r"(?:iPhone|iPad|iPod|AudioAccessory)\d+,\d+", family)
-        if ",".join(codes) != family:
+        codes = sorted(recorded.get(url, ()), key=natural_key)
+        if not codes:
+            codes = re.findall(r"(?:iPhone|iPad|iPod|AudioAccessory)\d+,\d+", family)
+        if not codes or ",".join(codes) != family and url not in recorded:
             candidates = aliases.get(family, [])
             if len(candidates) > 1:
                 # Some shared filenames refer to different models across OS generations.
@@ -103,6 +130,26 @@ def load_historical_devices(attachment, catalog_path=FIRMWARE_CATALOG):
     return devices
 
 
+def file_line(codes, names, full=False):
+    """One firmware file's device names; full=True keeps the original variant details."""
+    labels = {names.get(code, device_name(code, names)) if full else device_name(code, names)
+              for code in codes}
+    return "、".join(sorted(labels, key=natural_key))
+
+
+def file_lines_for(files, names):
+    """Render one line per firmware file, restoring variant details where lines would collide.
+
+    Variants such as "iPad (A16, WiFi)" and "iPad (A16, Cellular)" ship as separate files;
+    simplified they would both read "iPad A16", so those lines keep their full names.
+    """
+    files = list(files)
+    lines = [file_line(codes, names) for codes in files]
+    repeated = {line for line in lines if lines.count(line) > 1}
+    return [file_line(codes, names, full=True) if line in repeated else line
+            for codes, line in zip(files, lines)]
+
+
 def render_email(devices, names, attachment_name, mode):
     if not devices:
         raise ValueError("No firmware updates to include in the email")
@@ -114,7 +161,7 @@ def render_email(devices, names, attachment_name, mode):
         url = device.get("firmware_url")
         # Devices without a URL cannot be assumed to share a firmware file.
         file_key = url or ("missing_url", code)
-        groups[key][device_family(code)][file_key].add(device_name(code, names))
+        groups[key][device_family(code)][file_key].add(code)
         if url:
             urls.add(url)
 
@@ -137,10 +184,7 @@ def render_email(devices, names, attachment_name, mode):
         for family in ("iPhone", "iPad", "iPod", "HomePod", "其他设备"):
             if family not in families:
                 continue
-            file_lines = sorted(
-                ("、".join(sorted(models, key=natural_key))
-                 for models in families[family].values()),
-                key=natural_key)
+            file_lines = sorted(file_lines_for(families[family].values(), names), key=natural_key)
             text.append(f"  {family}")
             text.extend(f"    • {line}" for line in file_lines)
         text.append("")

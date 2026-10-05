@@ -91,7 +91,10 @@ class FirmwareEmailTests(unittest.TestCase):
                     self.device("iPad16,1", url="https://example.com/a.ipsw"),
                     self.device("iPad16,2", url="https://example.com/b.ipsw"),
                 ], mode)
-                self.assertEqual(separate.count("• iPad mini A17 Pro\n"), 2)
+                # Separate files would collide as "iPad mini A17 Pro"; keep the variant names.
+                self.assertIn("• iPad mini (A17 Pro, Cellular)\n", separate)
+                self.assertIn("• iPad mini (A17 Pro, WiFi)\n", separate)
+                self.assertNotIn("• iPad mini A17 Pro\n", separate)
 
     def test_ipad_model_details_are_preserved(self):
         cases = {
@@ -128,6 +131,54 @@ class FirmwareEmailTests(unittest.TestCase):
         _, text = self.render([self.device(), self.device("iPhone9,3")])
         self.assertIn("• iPhone 7\n", text)
         self.assertNotIn("GSM", text)
+
+    def test_only_colliding_lines_restore_variant_names(self):
+        self.names.update({"iPhone18,2": "iPhone 17 Pro Max", "iPhone19,2": "iPhone 18 Pro Max",
+                           "iPhone19,3": "iPhone 18 Pro Max (U.S.)",
+                           "iPad15,7": "iPad (A16, WiFi)", "iPad15,8": "iPad (A16, Cellular)"})
+        _, text = self.render([
+            self.device("iPhone18,2", url="https://example.com/17pm.ipsw"),
+            self.device("iPhone19,2", url="https://example.com/18pm.ipsw"),
+            self.device("iPhone19,3", url="https://example.com/18pm-us.ipsw"),
+            self.device("iPad15,7", url="https://example.com/a16-wifi.ipsw"),
+            self.device("iPad15,8", url="https://example.com/a16-cell.ipsw"),
+        ])
+        self.assertIn("• iPhone 17 Pro Max\n", text)
+        self.assertIn("• iPhone 18 Pro Max\n", text)
+        self.assertIn("• iPhone 18 Pro Max (U.S.)\n", text)
+        self.assertIn("• iPad (A16, Cellular)\n", text)
+        self.assertIn("• iPad (A16, WiFi)\n", text)
+        # Lines differing only by version stay simplified.
+        _, text = self.render([
+            self.device("iPad15,7", "27.0.1", url="https://example.com/a.ipsw"),
+            self.device("iPad15,8", "26.7.1", url="https://example.com/b.ipsw"),
+        ])
+        self.assertEqual(text.count("• iPad A16\n"), 2)
+
+    def test_historical_shared_filenames_use_recorded_devices_per_url(self):
+        with tempfile.TemporaryDirectory() as temp:
+            db = Path(temp) / "firmware.db"
+            checker.init_db(str(db))
+            new = "https://example.com/x/iPad_Pro_A12X_A12Z_27.0.1_24A446_Restore.ipsw"
+            old = "https://example.com/y/iPad_Pro_A12X_A12Z_26.7.1_23H30_Restore.ipsw"
+            checker.save_firmware(str(db), [], [
+                AppleDevice(hardware_code=code, build_version=build, firmware_sha1=code,
+                            firmware_url=url, product_version=version)
+                for codes, url, version, build in (
+                    (("iPad8,9", "iPad8,10"), new, "27.0.1", "24A446"),
+                    (("iPad8,1", "iPad8,5"), old, "26.7.1", "23H30"))
+                for code in codes])
+            attachment = Path(temp) / "x_updates.txt"
+            unrecorded = "https://example.com/z/iPad_Pro_A12X_A12Z_26.7.1_23H30_Restore.ipsw"
+            attachment.write_text("\n".join((new, old, unrecorded)) + "\n", encoding="utf-8")
+            devices = load_historical_devices(attachment, db_path=db)
+        by_url = {}
+        for device in devices:
+            by_url.setdefault(device["firmware_url"], set()).add(device["hardware_code"])
+        self.assertEqual(by_url[new], {"iPad8,9", "iPad8,10"})
+        self.assertEqual(by_url[old], {"iPad8,1", "iPad8,5"})
+        # URLs the checker never saw still fall back to the filename catalog.
+        self.assertEqual(len(by_url[unrecorded]), 12)
 
     def test_cli_generates_only_plain_text_files(self):
         with tempfile.TemporaryDirectory() as temp:
