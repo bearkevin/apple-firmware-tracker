@@ -4,8 +4,9 @@ A tool for automatically monitoring URLs for Apple Product firmware.
 ## Feature
 * Support iPhone / iPad / iPod / HomePod mini
 * Automatic polling every 15 minutes, Tuesday–Saturday 00:37–07:52 Beijing time
-  (UTC Monday–Friday 16:37–23:52), when Apple usually publishes firmware. Minutes are
-  offset from :00/:15/:30/:45, where GitHub most often delays or drops scheduled runs
+  (UTC Monday–Friday 16:37–23:52), when Apple usually publishes firmware. A Cloudflare
+  Worker Cron Trigger dispatches the workflow, because GitHub's own `schedule` events
+  are frequently delayed or dropped (see [Scheduler](#scheduler-cloudflare-worker))
 * Uses SQLite to store firmware information, including Device Code / URL / SHA1
 * Automatically generates RSS feeds for easy subscription and download via Download Tools.
   The feed keeps the firmware files from the three most recent update runs (no item cap),
@@ -67,6 +68,26 @@ workflow treats their presence as "updates found", commits the data, then invoke
 the ignored `log/` directory. If the firmware list cannot be fetched or parsed, the checker
 exits non-zero so the workflow run shows as failed.
 
+## Scheduler (Cloudflare Worker)
+
+`cloudflare/` contains a Worker whose Cron Triggers (UTC, same window as above) call the
+GitHub `workflow_dispatch` API for `firmware_check.yml` on `main`.
+
+1. Create a fine-grained GitHub token limited to this repository with
+   **Actions: Read and write** permission.
+2. Deploy:
+
+```bash
+cd cloudflare
+npx wrangler login
+npx wrangler secret put GITHUB_TOKEN   # paste the token
+npx wrangler deploy
+```
+
+Check runs in the Cloudflare dashboard (Worker → Settings → Trigger Events / Logs) and
+in the repository's Actions tab. When the token expires, dispatches fail with 401 and the
+cron event is marked as failed; rotate it with `wrangler secret put GITHUB_TOKEN`.
+
 Run the regression tests (the `Tests` workflow also runs them on pushes that touch code):
 
 ```bash
@@ -89,8 +110,9 @@ apple-firmware-tracker/
 ├── firmware_rss.xml        # RSS feed
 ├── updates/                # daily URL history (YYYY-MM-DD_updates.txt)
 ├── tests/                  # unit tests
+├── cloudflare/             # Cron Worker that dispatches firmware_check.yml
 └── .github/workflows/      # GitHub Actions
-    ├── firmware_check.yml  # scheduled check, commit, email
+    ├── firmware_check.yml  # check, commit, email (workflow_dispatch)
     └── tests.yml           # unit tests
 ```
 

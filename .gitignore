@@ -8,3 +8,7 @@ log/
 
 # Local tooling
 .codegraph/
+
+# Cloudflare Wrangler
+.wrangler/
+node_modules/
