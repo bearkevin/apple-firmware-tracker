@@ -1,0 +1,16 @@
+name = "ipsw"
+main = "src/index.js"
+compatibility_date = "2025-10-17"
+workers_dev = true
+
+routes = [
+  { pattern = "ipsw.bearxyz.uk/*", zone_name = "bearxyz.uk" },
+]
+
+[observability]
+enabled = true
+head_sampling_rate = 1
+
+[observability.logs]
+enabled = true
+invocation_logs = true
