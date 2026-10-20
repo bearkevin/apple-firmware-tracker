@@ -1,0 +1,21 @@
+name = "apple-firmware-tracker-cron"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+
+# Cloudflare Cron Triggers 使用 UTC，与原 GitHub schedule 保持一致：
+# 北京时间周二到周六 00:37-07:52（每 15 分钟）= UTC 周一至周五 16:37-23:52
+[triggers]
+crons = [
+  "37,52 16 * * MON-FRI",
+  "7,22,37,52 17-23 * * MON-FRI",
+]
+
+[vars]
+GITHUB_REPO = "bearkevin/apple-firmware-tracker"
+GITHUB_WORKFLOW = "firmware_check.yml"
+GITHUB_REF = "main"
+
+[observability]
+enabled = true
+
+# GITHUB_TOKEN 通过 `wrangler secret put GITHUB_TOKEN` 设置，不要写在这里

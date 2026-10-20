@@ -1,9 +1,6 @@
 on:
-  schedule:
-    # 北京时间周二到周六 00:37-07:52（每 15 分钟）= UTC 周一至周五 16:37-23:52
-    # 分钟错开 :00/:15/:30/:45，这些整点时段 GitHub 负载高，定时任务容易被延迟或丢弃
-    - cron: '37,52 16 * * 1-5'
-    - cron: '7,22,37,52 17-23 * * 1-5'
+  # 定时触发由 Cloudflare Worker（cloudflare/）按 Cron 调用 workflow_dispatch 完成，
+  # GitHub 自带的 schedule 经常延迟或丢弃；不要再加回 schedule，否则两边重复运行可能重复发信
   workflow_dispatch:
     inputs:
       resend_attachment:
