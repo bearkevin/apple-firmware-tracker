@@ -4,6 +4,15 @@
     <title>Apple Firmware Updates</title>
     <link>https://www.apple.com</link>
     <description>Latest Apple firmware updates found by checker script.</description>
+    <lastBuildDate>Thu, 22 Oct 2026 23:38:04 GMT</lastBuildDate>
+    <item>
+      <title>iPhone19,4 - 27.1 (24A94425)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/3f41a447-d8a6-48ae-83ae-056a64f57fd4/iPhone19,4_27.1_24A94425_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/3f41a447-d8a6-48ae-83ae-056a64f57fd4/iPhone19,4_27.1_24A94425_Restore.ipsw</guid>
+      <pubDate>Thu, 22 Oct 2026 23:38:04 GMT</pubDate>
+      <description>Build: 24A94425, SHA1: 19f1bafde7dc4cba523a146a16213464aaf3bf90</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/3f41a447-d8a6-48ae-83ae-056a64f57fd4/iPhone19,4_27.1_24A94425_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
     <item>
       <title>iPad8,1, iPad8,2, iPad8,3, iPad8,4, iPad8,5, iPad8,6, iPad8,7, iPad8,8 - 26.7.1 (23H30)</title>
       <link>https://updates.cdn-apple.com/2026FallFCS/a12e7557-25ba-4859-a74f-c700d3043d6f/iPad_Pro_A12X_A12Z_26.7.1_23H30_Restore.ipsw</link>
