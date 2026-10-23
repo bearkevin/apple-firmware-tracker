@@ -72,7 +72,7 @@ def device_name(code, names):
         name = names[code]
         return simplify_ipad_name(name) if code.startswith("iPad") else simplify_variant_name(name)
     logging.warning("Missing device name for %s; update device_names.json", code)
-    return f"名称待补充的 {device_family(code)} 设备"
+    return code
 
 
 def recorded_devices(db_path):

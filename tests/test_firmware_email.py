@@ -196,11 +196,10 @@ class FirmwareEmailTests(unittest.TestCase):
             self.assertIn("固件 15.8.8", text)
             self.assertNotIn("<html", text)
 
-    def test_unknown_names_are_explicit_without_exposing_codes(self):
+    def test_unknown_names_fall_back_to_device_code(self):
         with self.assertLogs(level="WARNING"):
             _, text = self.render([self.device("iPhone99,1")])
-        self.assertIn("名称待补充", text)
-        self.assertNotIn("iPhone99,1", text)
+        self.assertIn("• iPhone99,1", text)
 
     def test_empty_updates_do_not_produce_notification(self):
         with self.assertRaises(ValueError):
