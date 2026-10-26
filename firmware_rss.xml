@@ -4,7 +4,447 @@
     <title>Apple Firmware Updates</title>
     <link>https://www.apple.com</link>
     <description>Latest Apple firmware updates found by checker script.</description>
-    <lastBuildDate>Thu, 22 Oct 2026 23:38:04 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 26 Oct 2026 18:53:06 GMT</lastBuildDate>
+    <item>
+      <title>AudioAccessory5,1 - 27.2 (24K122)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/4ee5d3c9-158b-4ad9-95b4-6cfa9ac0f0d4/AudioAccessory5,1_27.2_24K122_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/4ee5d3c9-158b-4ad9-95b4-6cfa9ac0f0d4/AudioAccessory5,1_27.2_24K122_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24K122, SHA1: 2aa5d5d1f074d4093a943415e65f617612e8909f</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/4ee5d3c9-158b-4ad9-95b4-6cfa9ac0f0d4/AudioAccessory5,1_27.2_24K122_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPad7,11, iPad7,12 - 18.7.11 (22H384)</title>
+      <link>https://updates.cdn-apple.com/2026WinterFCS/cae87706-e21d-4989-a880-3210b045ef28/iPad_10.2_18.7.11_22H384_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026WinterFCS/cae87706-e21d-4989-a880-3210b045ef28/iPad_10.2_18.7.11_22H384_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 22H384, SHA1: c505fd252c8b0ac07442b188ab1f9d3d0a9e3891</description>
+      <enclosure url="https://updates.cdn-apple.com/2026WinterFCS/cae87706-e21d-4989-a880-3210b045ef28/iPad_10.2_18.7.11_22H384_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPad8,1, iPad8,2, iPad8,3, iPad8,4, iPad8,5, iPad8,6, iPad8,7, iPad8,8 - 26.7.2 (23H128)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/4d023f15-cc68-4a18-8901-152f979c4f2e/iPad_Pro_A12X_26.7.2_23H128_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/4d023f15-cc68-4a18-8901-152f979c4f2e/iPad_Pro_A12X_26.7.2_23H128_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 23H128, SHA1: 6ddb81dd54ceb97999b177535f92a4451b3d0fe4</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/4d023f15-cc68-4a18-8901-152f979c4f2e/iPad_Pro_A12X_26.7.2_23H128_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPad8,9, iPad8,10, iPad8,11, iPad8,12 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/16e7a18b-2da0-4cc2-93cb-ef47c401b796/iPad_Pro_A12X_A12Z_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/16e7a18b-2da0-4cc2-93cb-ef47c401b796/iPad_Pro_A12X_A12Z_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: 966a136cf08db12eb0634627f4539fee52b34846</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/16e7a18b-2da0-4cc2-93cb-ef47c401b796/iPad_Pro_A12X_A12Z_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPad11,1, iPad11,2, iPad11,3, iPad11,4 - 26.7.2 (23H128)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/688d3935-dc4f-47cf-bb64-88f679489250/iPad_Spring_2019_26.7.2_23H128_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/688d3935-dc4f-47cf-bb64-88f679489250/iPad_Spring_2019_26.7.2_23H128_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 23H128, SHA1: 99839ecba68475b7f996311a0d918f35861a8b8e</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/688d3935-dc4f-47cf-bb64-88f679489250/iPad_Spring_2019_26.7.2_23H128_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPad11,6, iPad11,7 - 26.7.2 (23H128)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/3d123248-6c99-43f3-b763-532414de9768/iPad_10.2_2020_26.7.2_23H128_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/3d123248-6c99-43f3-b763-532414de9768/iPad_10.2_2020_26.7.2_23H128_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 23H128, SHA1: 5f7d82631cd5c7562733ddae697daee85f66c871</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/3d123248-6c99-43f3-b763-532414de9768/iPad_10.2_2020_26.7.2_23H128_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPad12,1, iPad12,2 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/4ed6b0d9-7721-4690-b843-664305638776/iPad_10.2_2021_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/4ed6b0d9-7721-4690-b843-664305638776/iPad_10.2_2021_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: 533e740277329e1cbade8851716ca5015e4bd11a</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/4ed6b0d9-7721-4690-b843-664305638776/iPad_10.2_2021_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPad13,1, iPad13,2 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/9738ea88-b9d2-42a5-9a18-f678357537ce/iPad_Fall_2020_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/9738ea88-b9d2-42a5-9a18-f678357537ce/iPad_Fall_2020_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: 640a16a58e64244e66501f14ed69bb69696b4269</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/9738ea88-b9d2-42a5-9a18-f678357537ce/iPad_Fall_2020_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPad13,4, iPad13,5, iPad13,6, iPad13,7, iPad13,8, iPad13,9, iPad13,10, iPad13,11 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/9d88d626-ff74-4f39-a19f-217115bd016e/iPad_Pro_Spring_2021_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/9d88d626-ff74-4f39-a19f-217115bd016e/iPad_Pro_Spring_2021_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: ea19efe729595e361ae6ba9d4e25ae970dba7963</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/9d88d626-ff74-4f39-a19f-217115bd016e/iPad_Pro_Spring_2021_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPad13,16, iPad13,17 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/cd9ea34b-1243-4e28-9341-6adeb9c79e8f/iPad_Spring_2022_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/cd9ea34b-1243-4e28-9341-6adeb9c79e8f/iPad_Spring_2022_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: 0e39046c34450f63d9eae9883716f5c5853d53eb</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/cd9ea34b-1243-4e28-9341-6adeb9c79e8f/iPad_Spring_2022_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPad13,18, iPad13,19 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/a1b2e991-1473-40b3-a651-2b91ea179d94/iPad_Fall_2022_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/a1b2e991-1473-40b3-a651-2b91ea179d94/iPad_Fall_2022_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: 2cb5d29863f8696fcccdb3cf366429b79fefc22b</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/a1b2e991-1473-40b3-a651-2b91ea179d94/iPad_Fall_2022_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPad14,1, iPad14,2 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/e15bb4ab-bbba-4e3f-a400-0036b9f75bf8/iPad_Fall_2021_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/e15bb4ab-bbba-4e3f-a400-0036b9f75bf8/iPad_Fall_2021_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: bdb2f76cc907c0d5ac430976d3b8c2becf1e36c1</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/e15bb4ab-bbba-4e3f-a400-0036b9f75bf8/iPad_Fall_2021_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPad14,3, iPad14,4, iPad14,5, iPad14,6 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/cf482001-e9d3-4fe3-b9fd-fa7101a9659b/iPad14,3,iPad14,4,iPad14,5,iPad14,6_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/cf482001-e9d3-4fe3-b9fd-fa7101a9659b/iPad14,3,iPad14,4,iPad14,5,iPad14,6_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: 4bc204789d5951221855560bfab243f19ae8f167</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/cf482001-e9d3-4fe3-b9fd-fa7101a9659b/iPad14,3,iPad14,4,iPad14,5,iPad14,6_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPad14,8, iPad14,9, iPad14,10, iPad14,11 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/96d1dbc2-53ae-462f-b21d-9447fa94fab8/iPad_Air_M2_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/96d1dbc2-53ae-462f-b21d-9447fa94fab8/iPad_Air_M2_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: 606c7f9a78e0dd433aee5f0f6b2aca6d94d8dcbe</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/96d1dbc2-53ae-462f-b21d-9447fa94fab8/iPad_Air_M2_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPad16,1, iPad16,2 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/5312c473-c055-431a-a4cb-0d64aebe0413/iPad16,1,iPad16,2_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/5312c473-c055-431a-a4cb-0d64aebe0413/iPad16,1,iPad16,2_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: 8820800a7c70845a8fd68f4242aff7ce4096166b</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/5312c473-c055-431a-a4cb-0d64aebe0413/iPad16,1,iPad16,2_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPad16,3, iPad16,4, iPad16,5, iPad16,6 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/b6694d59-2d1a-41ab-99bd-5acfb5e4ba8c/iPad_Pro_M4_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/b6694d59-2d1a-41ab-99bd-5acfb5e4ba8c/iPad_Pro_M4_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: 2a5ae76f841f5fb3ddc6b1c7396695f4376c1c02</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/b6694d59-2d1a-41ab-99bd-5acfb5e4ba8c/iPad_Pro_M4_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone11,2, iPhone11,6 - 18.7.11 (22H384)</title>
+      <link>https://updates.cdn-apple.com/2026WinterFCS/81ee8c78-5e14-4c22-ba1b-27c9270911b6/iPhone11,2,iPhone11,4,iPhone11,6_18.7.11_22H384_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026WinterFCS/81ee8c78-5e14-4c22-ba1b-27c9270911b6/iPhone11,2,iPhone11,4,iPhone11,6_18.7.11_22H384_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 22H384, SHA1: e1c439ab288a576995d91aefadffafd04a22af0e</description>
+      <enclosure url="https://updates.cdn-apple.com/2026WinterFCS/81ee8c78-5e14-4c22-ba1b-27c9270911b6/iPhone11,2,iPhone11,4,iPhone11,6_18.7.11_22H384_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone11,8 - 18.7.11 (22H384)</title>
+      <link>https://updates.cdn-apple.com/2026WinterFCS/226d78bb-5511-4c5e-acb2-afd14875b940/iPhone11,8_18.7.11_22H384_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026WinterFCS/226d78bb-5511-4c5e-acb2-afd14875b940/iPhone11,8_18.7.11_22H384_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 22H384, SHA1: 0167231d1aeda1a22eb922da9d7ed77b027cbdff</description>
+      <enclosure url="https://updates.cdn-apple.com/2026WinterFCS/226d78bb-5511-4c5e-acb2-afd14875b940/iPhone11,8_18.7.11_22H384_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone12,1 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/22a2de9b-5ef9-44b7-9ace-62f861167fd8/iPhone12,1_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/22a2de9b-5ef9-44b7-9ace-62f861167fd8/iPhone12,1_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: 826df17cddfa1d004238ebed0558d6804eaa06ea</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/22a2de9b-5ef9-44b7-9ace-62f861167fd8/iPhone12,1_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone12,3, iPhone12,5 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/ec50683b-998e-4e91-9326-d902cfd5f7f9/iPhone12,3,iPhone12,5_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/ec50683b-998e-4e91-9326-d902cfd5f7f9/iPhone12,3,iPhone12,5_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: 0aa7864871e6abb4e10cc1949e181e44eb5620e1</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/ec50683b-998e-4e91-9326-d902cfd5f7f9/iPhone12,3,iPhone12,5_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone12,8 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/3fcff83a-f32d-49a3-aea9-559180b1d747/iPhone12,8_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/3fcff83a-f32d-49a3-aea9-559180b1d747/iPhone12,8_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: 21cf422ef073c760dbf44470c35c01915bbf8710</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/3fcff83a-f32d-49a3-aea9-559180b1d747/iPhone12,8_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone13,1 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/82e77164-5a04-4098-acac-29669613f87f/iPhone13,1_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/82e77164-5a04-4098-acac-29669613f87f/iPhone13,1_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: b12575a21a38203e12e9fed1e2c21d2dd7edecd1</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/82e77164-5a04-4098-acac-29669613f87f/iPhone13,1_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone13,2, iPhone13,3 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/e42b4fa4-b87e-4bce-b076-ef7dd9121ce1/iPhone13,2,iPhone13,3_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/e42b4fa4-b87e-4bce-b076-ef7dd9121ce1/iPhone13,2,iPhone13,3_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: a19e17bb8de5e1e4635b7a0daf936c32d640868d</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/e42b4fa4-b87e-4bce-b076-ef7dd9121ce1/iPhone13,2,iPhone13,3_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone13,4 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/7940f088-6006-4815-8b8b-ef2fd2f0f4cc/iPhone13,4_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/7940f088-6006-4815-8b8b-ef2fd2f0f4cc/iPhone13,4_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: 8d06f650950e8a3dc1ea6a5de8e8de655eaa8f52</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/7940f088-6006-4815-8b8b-ef2fd2f0f4cc/iPhone13,4_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone14,2 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/f1b55dac-7e4b-4958-8d7f-eeb46b1515ae/iPhone14,2_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/f1b55dac-7e4b-4958-8d7f-eeb46b1515ae/iPhone14,2_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: cbabbe82500ed8712ae75efe5ed7687a7b13a13d</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/f1b55dac-7e4b-4958-8d7f-eeb46b1515ae/iPhone14,2_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone14,3 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/59db57ab-bf39-4722-ae2c-930079835914/iPhone14,3_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/59db57ab-bf39-4722-ae2c-930079835914/iPhone14,3_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: 9ab83163dbd3cbc2f9478a3ecc31399549a9f48b</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/59db57ab-bf39-4722-ae2c-930079835914/iPhone14,3_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone14,4 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/21a77e9c-f77a-4350-a47e-d5083375d0b2/iPhone14,4_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/21a77e9c-f77a-4350-a47e-d5083375d0b2/iPhone14,4_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: ba411215739cf5897a701e7464a6b855ab82ea3b</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/21a77e9c-f77a-4350-a47e-d5083375d0b2/iPhone14,4_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone14,5 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/28a1e046-aaaf-4f60-9990-b6cfa708511a/iPhone14,5_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/28a1e046-aaaf-4f60-9990-b6cfa708511a/iPhone14,5_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: 6ab15ecbfc7c93d0f9259aac5cd494034c16ce9e</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/28a1e046-aaaf-4f60-9990-b6cfa708511a/iPhone14,5_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone14,6 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/57f5b9d2-d7e3-4458-a03e-a2ea5aa40a19/iPhone14,6_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/57f5b9d2-d7e3-4458-a03e-a2ea5aa40a19/iPhone14,6_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: bf9aaef4814aa88ddaa4824ed1ccb213305f1fb7</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/57f5b9d2-d7e3-4458-a03e-a2ea5aa40a19/iPhone14,6_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone14,7 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/9e4d9a90-76a7-4d2f-b8ff-f762f4d056d8/iPhone14,7_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/9e4d9a90-76a7-4d2f-b8ff-f762f4d056d8/iPhone14,7_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: 77f7a48ce19ac9e81742a9c80c297cc80bd897df</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/9e4d9a90-76a7-4d2f-b8ff-f762f4d056d8/iPhone14,7_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone14,8 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/89559732-687f-4a34-8b12-1e1030952835/iPhone14,8_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/89559732-687f-4a34-8b12-1e1030952835/iPhone14,8_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: 5770b46da8ad4888306bdb9ecf707bc896eb91c4</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/89559732-687f-4a34-8b12-1e1030952835/iPhone14,8_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone15,2 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/af566c65-4bae-4e61-ab68-8406b4def41c/iPhone15,2_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/af566c65-4bae-4e61-ab68-8406b4def41c/iPhone15,2_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: 03ec70cef7d9d093d27929bae88c7bc4d016b4c7</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/af566c65-4bae-4e61-ab68-8406b4def41c/iPhone15,2_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone15,3 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/d3fbbcde-32ef-4def-8d18-bcabbbdd01b3/iPhone15,3_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/d3fbbcde-32ef-4def-8d18-bcabbbdd01b3/iPhone15,3_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: 0d5f6b016628c6715f4e00397bfdb4f37f0f40a4</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/d3fbbcde-32ef-4def-8d18-bcabbbdd01b3/iPhone15,3_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone15,4 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/70fb28d9-6aa1-4349-9756-6423adbda326/iPhone15,4_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/70fb28d9-6aa1-4349-9756-6423adbda326/iPhone15,4_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: a05cc3dda2a983c19fab69dd3f367d84889c0c67</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/70fb28d9-6aa1-4349-9756-6423adbda326/iPhone15,4_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone15,5 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/8f409903-0c3a-4333-976e-87f5afa55174/iPhone15,5_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/8f409903-0c3a-4333-976e-87f5afa55174/iPhone15,5_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: 2c6c16adc71ee0515fc5b965626ce17595b1cc86</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/8f409903-0c3a-4333-976e-87f5afa55174/iPhone15,5_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone16,1 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/c7039e15-4e45-489f-8cbf-d0c4cd4649bf/iPhone16,1_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/c7039e15-4e45-489f-8cbf-d0c4cd4649bf/iPhone16,1_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: fafc2b0158f5de908f0def847282f4c1e864787f</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/c7039e15-4e45-489f-8cbf-d0c4cd4649bf/iPhone16,1_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone16,2 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/dcf3b441-e473-4c28-a936-99d6af8c60a2/iPhone16,2_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/dcf3b441-e473-4c28-a936-99d6af8c60a2/iPhone16,2_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: d7a3c330c756d9041fe4ed03d6066360da7a4d8a</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/dcf3b441-e473-4c28-a936-99d6af8c60a2/iPhone16,2_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone17,1 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/ba681148-cc53-467c-bff5-dbcb03cb03bc/iPhone17,1_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/ba681148-cc53-467c-bff5-dbcb03cb03bc/iPhone17,1_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: 9c07287009de10d7fb47d1f60aa5d3b215ca99fc</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/ba681148-cc53-467c-bff5-dbcb03cb03bc/iPhone17,1_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone17,2 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/3a256522-d649-403a-8ec5-b6fbcb940cbe/iPhone17,2_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/3a256522-d649-403a-8ec5-b6fbcb940cbe/iPhone17,2_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: 465898b8496aa6ccf1af7f36831442c45c7de549</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/3a256522-d649-403a-8ec5-b6fbcb940cbe/iPhone17,2_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone17,3 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/c6c0afa0-c002-45b9-ad4c-d2db3bfa30ac/iPhone17,3_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/c6c0afa0-c002-45b9-ad4c-d2db3bfa30ac/iPhone17,3_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: deded6f40315d32e1043f23f65a045bafdfba0cc</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/c6c0afa0-c002-45b9-ad4c-d2db3bfa30ac/iPhone17,3_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone17,4 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/690caa55-74ed-47aa-b017-cb3a692bf20d/iPhone17,4_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/690caa55-74ed-47aa-b017-cb3a692bf20d/iPhone17,4_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: 17ac7ca7f9b8a26eb0ce6c43defcd4a17743b05f</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/690caa55-74ed-47aa-b017-cb3a692bf20d/iPhone17,4_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone17,5 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/a31d2089-6410-4063-81a3-1f7f3f53277e/iPhone17,5_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/a31d2089-6410-4063-81a3-1f7f3f53277e/iPhone17,5_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: 3a4db9b45ed53fd38f3e92256b5f9870abf36e7f</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/a31d2089-6410-4063-81a3-1f7f3f53277e/iPhone17,5_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPad15,7 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/14528a7a-accd-49ef-9931-44bb85432620/iPad15,7_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/14528a7a-accd-49ef-9931-44bb85432620/iPad15,7_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: 6a3b97f42cd7dd989ec56a89fe681da1458975e7</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/14528a7a-accd-49ef-9931-44bb85432620/iPad15,7_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPad15,8 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/9d05d84a-50ed-46d2-bfaa-2347523753af/iPad15,8_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/9d05d84a-50ed-46d2-bfaa-2347523753af/iPad15,8_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: eebbc9264bb5648a5df5ea3eaecba0aecf74a998</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/9d05d84a-50ed-46d2-bfaa-2347523753af/iPad15,8_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPad15,5, iPad15,3, iPad15,4, iPad15,6 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/e9922d41-a093-496f-86f4-b73e161b1c2b/iPad15,3,iPad15,4,iPad15,5,iPad15,6_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/e9922d41-a093-496f-86f4-b73e161b1c2b/iPad15,3,iPad15,4,iPad15,5,iPad15,6_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: 9bda7a65f477f5fe762aa5687ec5e90075d383bf</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/e9922d41-a093-496f-86f4-b73e161b1c2b/iPad15,3,iPad15,4,iPad15,5,iPad15,6_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone18,2 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/82995481-b196-4d33-bd11-97788acc1d53/iPhone18,2_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/82995481-b196-4d33-bd11-97788acc1d53/iPhone18,2_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: afd3b000b08f0bce28e8eb8fac55b78dcffc1b38</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/82995481-b196-4d33-bd11-97788acc1d53/iPhone18,2_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone18,4 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/9d7e9bfa-4de2-4654-8f87-c63c26c7cf03/iPhone18,4_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/9d7e9bfa-4de2-4654-8f87-c63c26c7cf03/iPhone18,4_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: 60d9fc77e0dddc676e6fef780f52e8faa4d0fe91</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/9d7e9bfa-4de2-4654-8f87-c63c26c7cf03/iPhone18,4_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone18,1 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/f7e03864-9d1c-4854-8f15-440ee15f9114/iPhone18,1_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/f7e03864-9d1c-4854-8f15-440ee15f9114/iPhone18,1_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: 7e1063d8d51e055fa2dc7b29d03681ccae5ae476</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/f7e03864-9d1c-4854-8f15-440ee15f9114/iPhone18,1_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone18,3 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/fd6e15e5-2710-4a00-821d-215fdcf1af95/iPhone18,3_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/fd6e15e5-2710-4a00-821d-215fdcf1af95/iPhone18,3_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: 7e0b2881baeeb5aaabe3589cab67e8a5c8a12339</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/fd6e15e5-2710-4a00-821d-215fdcf1af95/iPhone18,3_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPad17,2, iPad17,1, iPad17,3, iPad17,4 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/b79b2e3c-6409-4d03-a01c-01b2a07cbabb/iPad17,1,iPad17,2,iPad17,3,iPad17,4_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/b79b2e3c-6409-4d03-a01c-01b2a07cbabb/iPad17,1,iPad17,2,iPad17,3,iPad17,4_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: 32ee28d97d9c052ca555129d9c818e61d93ceb15</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/b79b2e3c-6409-4d03-a01c-01b2a07cbabb/iPad17,1,iPad17,2,iPad17,3,iPad17,4_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPad16,10, iPad16,9, iPad16,8, iPad16,11 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/28cc3331-3e15-4cd5-aca4-209552b44503/iPad16,10,iPad16,11,iPad16,8,iPad16,9_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/28cc3331-3e15-4cd5-aca4-209552b44503/iPad16,10,iPad16,11,iPad16,8,iPad16,9_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: a6ccb8c64884dd5662fe4b2b256e09e6d078325b</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/28cc3331-3e15-4cd5-aca4-209552b44503/iPad16,10,iPad16,11,iPad16,8,iPad16,9_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone18,5 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/8864e09a-978e-418a-8924-1ebd914df39b/iPhone18,5_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/8864e09a-978e-418a-8924-1ebd914df39b/iPhone18,5_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: 0c3531af2437da784e242a794dd1ee79734a4407</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/8864e09a-978e-418a-8924-1ebd914df39b/iPhone18,5_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone19,2, iPhone19,3, iPhone19,7 - 27.2 (24B119)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/fdde63b6-6de4-4199-a5d4-7ba4e46b758e/iPhone19,2,iPhone19,3,iPhone19,7_27.2_24B119_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/fdde63b6-6de4-4199-a5d4-7ba4e46b758e/iPhone19,2,iPhone19,3,iPhone19,7_27.2_24B119_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B119, SHA1: 0050a22d4c1311105d1f7e2f4535e9dd558d7f30</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/fdde63b6-6de4-4199-a5d4-7ba4e46b758e/iPhone19,2,iPhone19,3,iPhone19,7_27.2_24B119_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>iPhone19,4 - 27.2 (24B91020)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/8d0335dc-f553-4d16-b07b-28951fde8f9e/iPhone19,4_27.2_24B91020_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/8d0335dc-f553-4d16-b07b-28951fde8f9e/iPhone19,4_27.2_24B91020_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24B91020, SHA1: ee29c8bb40f328e15117e5765c94959a6b022c75</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/8d0335dc-f553-4d16-b07b-28951fde8f9e/iPhone19,4_27.2_24B91020_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>AudioAccessory11,1 - 27.2 (24K122)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/05f045dd-35a4-4b00-8bdc-de83b90d9ff8/AudioAccessory11,1_27.2_24K122_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/05f045dd-35a4-4b00-8bdc-de83b90d9ff8/AudioAccessory11,1_27.2_24K122_Restore.ipsw</guid>
+      <pubDate>Mon, 26 Oct 2026 18:53:06 GMT</pubDate>
+      <description>Build: 24K122, SHA1: 7d8b7606d4f121e3ff6bf975e413dc4d026689ad</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/05f045dd-35a4-4b00-8bdc-de83b90d9ff8/AudioAccessory11,1_27.2_24K122_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
     <item>
       <title>iPhone19,4 - 27.1 (24A94425)</title>
       <link>https://updates.cdn-apple.com/2026FallFCS/3f41a447-d8a6-48ae-83ae-056a64f57fd4/iPhone19,4_27.1_24A94425_Restore.ipsw</link>
