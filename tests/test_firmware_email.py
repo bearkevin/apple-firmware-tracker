@@ -104,6 +104,8 @@ class FirmwareEmailTests(unittest.TestCase):
             "iPad Pro (11-inch, Cellular) (4th generation)": "iPad Pro 11-inch 4th generation",
             "iPad Pro 3 (11-inch, WiFi, 1TB Model)": "iPad Pro 3 11-inch",
             "iPad Pro 3 (11-inch, Cellular)": "iPad Pro 3 11-inch",
+            "iPad Pro (11-inch, WiFi, 1TB Model) (1st generation)": "iPad Pro 11-inch 1st generation",
+            "iPad Pro (12.9-inch, Cellular) (3rd generation)": "iPad Pro 12.9-inch 3rd generation",
             "iPad (Cellular, 9th generation)": "iPad 9th generation",
             "iPad Air (China)": "iPad Air",
             "iPad mini (GSM)": "iPad mini",
