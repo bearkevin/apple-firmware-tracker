@@ -25,8 +25,8 @@ class FirmwareEmailTests(unittest.TestCase):
         return {"hardware_code": code, "product_version": version,
                 "build_version": build, "firmware_url": url}
 
-    def render(self, devices, mode="auto"):
-        return render_email(devices, self.names, "2026-06-29_updates.txt", mode)
+    def render(self, devices, mode="auto", reason=None):
+        return render_email(devices, self.names, "2026-06-29_updates.txt", mode, reason)
 
     def test_groups_versions_builds_and_device_families(self):
         subject, text = self.render([
@@ -206,6 +206,12 @@ class FirmwareEmailTests(unittest.TestCase):
     def test_empty_updates_do_not_produce_notification(self):
         with self.assertRaises(ValueError):
             self.render([])
+
+    def test_manual_email_shows_resend_reason(self):
+        _, text = self.render([self.device()], mode="manual", reason="修正设备名称")
+        self.assertIn("补发原因：修正设备名称", text)
+        _, text = self.render([self.device()], reason="修正设备名称")
+        self.assertNotIn("补发原因", text)
 
     def test_manual_email_is_labeled_as_historical(self):
         _, text = self.render([self.device()], mode="manual")

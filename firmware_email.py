@@ -150,7 +150,7 @@ def file_lines_for(files, names):
             for codes, line in zip(files, lines)]
 
 
-def render_email(devices, names, attachment_name, mode):
+def render_email(devices, names, attachment_name, mode, reason=None):
     if not devices:
         raise ValueError("No firmware updates to include in the email")
     groups = defaultdict(lambda: defaultdict(lambda: defaultdict(set)))
@@ -176,7 +176,10 @@ def render_email(devices, names, attachment_name, mode):
             if mode == "manual" else
             "以下仅列出本次检测到更新的设备；附件保留当日累计的固件下载链接。")
     note += " 每行对应一个固件文件，共用该文件的设备合并展示。"
-    text = ["Apple Firmware Tracker", mode_label, summary, "", note, ""]
+    text = ["Apple Firmware Tracker", mode_label, summary, ""]
+    if mode == "manual" and reason:
+        text.extend([f"补发原因：{reason}", ""])
+    text.extend([note, ""])
     for (version, build), families in sorted(
             groups.items(), key=lambda item: (natural_key(item[0][0]), natural_key(item[0][1])),
             reverse=True):
@@ -199,13 +202,14 @@ def main():
     parser.add_argument("--mode", choices=("auto", "manual"), default="auto")
     parser.add_argument("--updates", type=Path, default=Path("log/firmware_updates.json"))
     parser.add_argument("--output-dir", type=Path, default=Path("log/email"))
+    parser.add_argument("--reason", help="Why a manual resend is sent; shown in the email body")
     args = parser.parse_args()
     if not args.attachment.is_file():
         parser.error("Attachment does not exist")
     names = json.loads(DEVICE_NAMES.read_text(encoding="utf-8"))
     devices = (load_historical_devices(args.attachment) if args.mode == "manual"
                else json.loads(args.updates.read_text(encoding="utf-8")))
-    subject, text = render_email(devices, names, args.attachment.name, args.mode)
+    subject, text = render_email(devices, names, args.attachment.name, args.mode, args.reason)
     args.output_dir.mkdir(parents=True, exist_ok=True)
     for filename, content in (("subject.txt", subject), ("body.txt", text)):
         (args.output_dir / filename).write_text(content, encoding="utf-8")

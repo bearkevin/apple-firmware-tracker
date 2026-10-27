@@ -7,6 +7,10 @@ on:
         description: "Existing updates/*_updates.txt file to email manually"
         required: false
         type: string
+      resend_reason:
+        description: "Reason shown in the resend email body (optional)"
+        required: false
+        type: string
 
 # 避免手动补发与定时检测同时运行导致 push 冲突
 concurrency:
@@ -86,8 +90,9 @@ jobs:
         env:
           ATTACHMENT_PATH: ${{ steps.detect_updates.outputs.attachment_path }}
           SEND_MODE: ${{ steps.detect_updates.outputs.send_mode }}
+          RESEND_REASON: ${{ github.event.inputs.resend_reason }}
         run: |
-          python3 firmware_email.py --attachment "$ATTACHMENT_PATH" --mode "$SEND_MODE"
+          python3 firmware_email.py --attachment "$ATTACHMENT_PATH" --mode "$SEND_MODE" --reason "$RESEND_REASON"
           echo "subject=$(< log/email/subject.txt)" >> "$GITHUB_OUTPUT"
 
       # 先提交再发信：提交失败时不发信，下一轮会重新检测并通知，避免重复邮件
