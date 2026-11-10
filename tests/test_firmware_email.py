@@ -207,6 +207,15 @@ class FirmwareEmailTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.render([])
 
+    def test_emails_do_not_include_explanatory_note(self):
+        for mode in ("auto", "manual"):
+            with self.subTest(mode=mode):
+                _, text = self.render([self.device()], mode=mode)
+                self.assertNotIn("以下仅列出本次检测到更新的设备", text)
+                self.assertNotIn("以下为所选历史附件中的固件与适用设备", text)
+                self.assertNotIn("每行对应一个固件文件", text)
+                self.assertIn("1 个版本 · 1 个固件文件\\n\\n固件 15.8.8", text)
+
     def test_manual_email_shows_resend_reason(self):
         _, text = self.render([self.device()], mode="manual", reason="修正设备名称")
         self.assertIn("补发原因：修正设备名称", text)
