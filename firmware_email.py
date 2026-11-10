@@ -172,14 +172,10 @@ def render_email(devices, names, attachment_name, mode, reason=None):
     subject = f"[Apple Firmware Tracker] 固件更新：{version_summary}"
     mode_label = "历史更新补发" if mode == "manual" else "本次固件更新"
     summary = f"{len(versions)} 个版本 · {len(urls)} 个固件文件"
-    note = ("以下为所选历史附件中的固件与适用设备。"
-            if mode == "manual" else
-            "以下仅列出本次检测到更新的设备；附件保留当日累计的固件下载链接。")
-    note += " 每行对应一个固件文件，共用该文件的设备合并展示。"
     text = ["Apple Firmware Tracker", mode_label, summary, ""]
     if mode == "manual" and reason:
         text.extend([f"补发原因：{reason}", ""])
-    text.extend([note, ""])
+
     for (version, build), families in sorted(
             groups.items(), key=lambda item: (natural_key(item[0][0]), natural_key(item[0][1])),
             reverse=True):
