@@ -26,6 +26,21 @@ class QueryTests(unittest.TestCase):
     def tearDown(self):
         self.temp.cleanup()
 
+
+    def test_homeview_codes_have_their_own_statistics_family(self):
+        with sqlite3.connect(self.db) as conn:
+            conn.executemany("INSERT INTO firmware VALUES (?, ?, ?, ?, ?, ?)", [
+                ("HomeAccessory17,1", "27.2", "24V526", "x", "https://example.com/home.ipsw", None),
+                ("HomeAccessory17,2", "27.2", "24V526", "y", "https://example.com/home.ipsw", None),
+            ])
+        conn = query.connect_db(self.db)
+        try:
+            stats = query.get_statistics(conn)
+        finally:
+            conn.close()
+        self.assertEqual(stats["by_device_type"]["HomeView"], 2)
+        self.assertNotIn("Other", stats["by_device_type"])
+
     def test_filters_combine_and_limit_applies(self):
         conn = query.connect_db(self.db)
         try:
