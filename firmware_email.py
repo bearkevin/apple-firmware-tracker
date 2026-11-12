@@ -38,7 +38,8 @@ def firmware_parts(url):
 
 def device_family(code):
     for prefix, label in (("iPhone", "iPhone"), ("iPad", "iPad"),
-                          ("iPod", "iPod"), ("AudioAccessory", "HomePod")):
+                          ("iPod", "iPod"), ("AudioAccessory", "HomePod"),
+                          ("HomeAccessory", "HomeView")):
         if code.startswith(prefix):
             return label
     return "其他设备"
@@ -113,7 +114,7 @@ def load_historical_devices(attachment, catalog_path=FIRMWARE_CATALOG, db_path=F
         family, version, build = firmware_parts(url)
         codes = sorted(recorded.get(url, ()), key=natural_key)
         if not codes:
-            codes = re.findall(r"(?:iPhone|iPad|iPod|AudioAccessory)\d+,\d+", family)
+            codes = re.findall(r"(?:iPhone|iPad|iPod|AudioAccessory|HomeAccessory)\d+,\d+", family)
         if not codes or ",".join(codes) != family and url not in recorded:
             candidates = aliases.get(family, [])
             if len(candidates) > 1:
@@ -180,7 +181,7 @@ def render_email(devices, names, attachment_name, mode, reason=None):
             groups.items(), key=lambda item: (natural_key(item[0][0]), natural_key(item[0][1])),
             reverse=True):
         text.extend([f"固件 {version}（Build {build}）", "获得更新的设备："])
-        for family in ("iPhone", "iPad", "iPod", "HomePod", "其他设备"):
+        for family in ("iPhone", "iPad", "iPod", "HomePod", "HomeView", "其他设备"):
             if family not in families:
                 continue
             file_lines = sorted(file_lines_for(families[family].values(), names), key=natural_key)
