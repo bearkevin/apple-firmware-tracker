@@ -77,6 +77,7 @@ def get_statistics(conn: sqlite3.Connection) -> Dict:
                 WHEN hardware_code LIKE 'iPad%' THEN 'iPad'
                 WHEN hardware_code LIKE 'iPod%' THEN 'iPod'
                 WHEN hardware_code LIKE 'AudioAccessory%' THEN 'HomePod'
+                WHEN hardware_code LIKE 'HomeAccessory%' THEN 'HomeView'
                 ELSE 'Other'
             END as device_type,
             COUNT(*) as count
