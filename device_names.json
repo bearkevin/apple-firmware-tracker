@@ -1,9 +1,11 @@
 {
   "AudioAccessory1,1": "HomePod",
   "AudioAccessory1,2": "HomePod (Unknown Model)",
-  "AudioAccessory5,1": "HomePod mini",
   "AudioAccessory11,1": "HomePod mini (2nd generation)",
+  "AudioAccessory5,1": "HomePod mini",
   "AudioAccessory6,1": "HomePod (2nd generation)",
+  "HomeAccessory17,1": "Apple HomeView (Standard Base)",
+  "HomeAccessory17,2": "Apple HomeView (Wall Mounted)",
   "iPad1,1": "iPad 1",
   "iPad11,1": "iPad mini 5 (WiFi)",
   "iPad11,2": "iPad mini 5 (Cellular)",

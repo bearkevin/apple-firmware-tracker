@@ -2,7 +2,7 @@
 A tool for automatically monitoring URLs for Apple Product firmware.
 
 ## Feature
-* Support iPhone / iPad / iPod / HomePod mini
+* Support iPhone / iPad / iPod / HomePod / Apple HomeView
 * Automatic polling every 15 minutes, Tuesday–Saturday 00:37–07:52 Beijing time
   (UTC Monday–Friday 16:37–23:52), when Apple usually publishes firmware. A Cloudflare
   Worker Cron Trigger dispatches the workflow, because GitHub's own `schedule` events
@@ -21,7 +21,7 @@ A tool for automatically monitoring URLs for Apple Product firmware.
 Automatic notifications list only the devices updated in the current check. The attached
 `updates/YYYY-MM-DD_updates.txt` (named by Beijing date) still contains all firmware URLs
 collected that day.
-Each version/build has its own section under iPhone, iPad, iPod, or HomePod.
+Each version/build has its own section under iPhone, iPad, iPod, HomePod, or HomeView.
 Each line represents one firmware URL, listing the deduplicated product names that share
 that file (for example, iPhone 12 and iPhone 12 Pro). Different firmware files stay on
 separate lines. iPad names omit connectivity, regional, and storage variants before being
@@ -44,8 +44,11 @@ a historical attachment with a matching summary. Email generation or delivery fa
 then mark the workflow as failed.
 
 `device_names.json` contains an offline identifier-to-product-name catalog sourced from
-<https://api.ipsw.me/v4/devices>. Update it when adding new devices. Unknown names are
-shown as “名称待补充” and logged, rather than presented as device codes.
+<https://api.ipsw.me/v4/devices>. Update it when adding new devices. Unknown names are logged and fall back to hardware codes until a verified name is added.
+`HomeAccessory17,1` (standard base) and `HomeAccessory17,2` (wall mounted)
+are Apple HomeView models, cross-checked against the [Apple Wiki HomeView device identifiers](https://theapplewiki.com/wiki/HomeView)
+when a matching ipsw.me catalog entry is unavailable. The existing
+`AudioAccessory1,2` entry remains `HomePod (Unknown Model)`, as named by ipsw.me.
 Historical attachments resolve each URL to devices from `firmware.db` (the exact URL as the
 checker recorded it in `firmware_history`/`firmware`). Only URLs the database has never seen
 fall back to `设备名称_固件名称.csv`, which supplies shared firmware filename aliases; keep both

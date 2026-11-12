@@ -40,6 +40,46 @@ class FirmwareEmailTests(unittest.TestCase):
         self.assertNotIn("iPad7,5", text)
         self.assertIn("2 个版本", text)
 
+
+    def test_homeview_models_render_with_distinct_names_in_own_group(self):
+        names = json.loads(DEVICE_NAMES.read_text(encoding="utf-8"))
+        self.assertEqual(names["HomeAccessory17,1"], "Apple HomeView (Standard Base)")
+        self.assertEqual(names["HomeAccessory17,2"], "Apple HomeView (Wall Mounted)")
+        # ipsw.me still labels this older HomePod identifier as unknown.
+        self.assertEqual(names["AudioAccessory1,2"], "HomePod (Unknown Model)")
+        self.names.update(names)
+        url = "https://example.com/HomeAccessory17,1,HomeAccessory17,2_27.2_24V526_Restore.ipsw"
+        for mode in ("auto", "manual"):
+            with self.subTest(mode=mode):
+                _, text = self.render([
+                    self.device("HomeAccessory17,1", "27.2", "24V526", url),
+                    self.device("HomeAccessory17,2", "27.2", "24V526", url),
+                ], mode=mode)
+                self.assertIn("  HomeView\n", text)
+                self.assertIn("• Apple HomeView (Standard Base)、Apple HomeView (Wall Mounted)\n", text)
+                self.assertIn("1 个固件文件", text)
+                self.assertNotIn("其他设备", text)
+                self.assertNotIn("HomeAccessory17,", text)
+
+    def test_historical_homeview_filename_recovers_both_codes_without_db(self):
+        with tempfile.TemporaryDirectory() as temp:
+            attachment = Path(temp) / "2026-11-13_updates.txt"
+            attachment.write_text(
+                "https://example.com/HomeAccessory17,1,HomeAccessory17,2_27.2_24V526_Restore.ipsw\n",
+                encoding="utf-8",
+            )
+            devices = load_historical_devices(
+                attachment, db_path=Path(temp) / "missing-firmware.db"
+            )
+        self.assertEqual({d["hardware_code"] for d in devices},
+                         {"HomeAccessory17,1", "HomeAccessory17,2"})
+        self.assertEqual({d["build_version"] for d in devices}, {"24V526"})
+        _, text = render_email(devices, json.loads(DEVICE_NAMES.read_text(encoding="utf-8")),
+                               "2026-11-13_updates.txt", "manual")
+        self.assertIn("  HomeView\n", text)
+        self.assertIn("Apple HomeView (Standard Base)", text)
+        self.assertIn("Apple HomeView (Wall Mounted)", text)
+
     def test_shared_models_and_urls_are_counted_once(self):
         _, text = self.render([self.device(), self.device("iPhone9,3")])
         self.assertEqual(text.count("• iPhone 7"), 1)
