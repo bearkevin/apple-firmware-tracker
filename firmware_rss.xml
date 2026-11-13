@@ -4,7 +4,23 @@
     <title>Apple Firmware Updates</title>
     <link>https://www.apple.com</link>
     <description>Latest Apple firmware updates found by checker script.</description>
-    <lastBuildDate>Thu, 12 Nov 2026 19:38:04 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 13 Nov 2026 19:53:03 GMT</lastBuildDate>
+    <item>
+      <title>AudioAccessory5,1 - 27.2.1 (24K157)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/f952d664-d8fd-46e3-894e-64dbdc4c01f3/AudioAccessory5,1_27.2.1_24K157_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/f952d664-d8fd-46e3-894e-64dbdc4c01f3/AudioAccessory5,1_27.2.1_24K157_Restore.ipsw</guid>
+      <pubDate>Fri, 13 Nov 2026 19:53:03 GMT</pubDate>
+      <description>Build: 24K157, SHA1: b1a92edb6318cdab1cc67fce066ab540c3c38496</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/f952d664-d8fd-46e3-894e-64dbdc4c01f3/AudioAccessory5,1_27.2.1_24K157_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
+    <item>
+      <title>AudioAccessory11,1 - 27.2.1 (24K157)</title>
+      <link>https://updates.cdn-apple.com/2026FallFCS/8074eaa3-74fc-4d64-bdda-00e527a80b85/AudioAccessory11,1_27.2.1_24K157_Restore.ipsw</link>
+      <guid>https://updates.cdn-apple.com/2026FallFCS/8074eaa3-74fc-4d64-bdda-00e527a80b85/AudioAccessory11,1_27.2.1_24K157_Restore.ipsw</guid>
+      <pubDate>Fri, 13 Nov 2026 19:53:03 GMT</pubDate>
+      <description>Build: 24K157, SHA1: d538726ad1497900e999049fd4357de5b43eb73b</description>
+      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/8074eaa3-74fc-4d64-bdda-00e527a80b85/AudioAccessory11,1_27.2.1_24K157_Restore.ipsw" type="application/x-ipsw" length="0" />
+    </item>
     <item>
       <title>HomeAccessory17,1, HomeAccessory17,2 - 27.2 (24V526)</title>
       <link>https://updates.cdn-apple.com/2026FallFCS/ec218b18-4303-46a2-9bb0-95b159169149/HomeAccessory17,1,HomeAccessory17,2_27.2_24V526_Restore.ipsw</link>
@@ -444,14 +460,6 @@
       <pubDate>Mon, 09 Nov 2026 18:23:18 GMT</pubDate>
       <description>Build: 24B8156, SHA1: af123fa0c79c920ee3bc2efb2d93716ee7e5c6ff</description>
       <enclosure url="https://updates.cdn-apple.com/2026FallFCS/8da0c0d3-af9e-4eed-807e-c5f9edcc6a67/iPad19,1,iPad19,2_27.2.1_24B8156_Restore.ipsw" type="application/x-ipsw" length="0" />
-    </item>
-    <item>
-      <title>iPad19,2, iPad19,1 - 27.2 (24B8120)</title>
-      <link>https://updates.cdn-apple.com/2026FallFCS/d70a938c-e796-4f36-bf9a-cb235fedffba/iPad19,1,iPad19,2_27.2_24B8120_Restore.ipsw</link>
-      <guid>https://updates.cdn-apple.com/2026FallFCS/d70a938c-e796-4f36-bf9a-cb235fedffba/iPad19,1,iPad19,2_27.2_24B8120_Restore.ipsw</guid>
-      <pubDate>Thu, 05 Nov 2026 19:23:04 GMT</pubDate>
-      <description>Build: 24B8120, SHA1: a7121fd8a6821c2f402bd2e441e7b1e68c96de31</description>
-      <enclosure url="https://updates.cdn-apple.com/2026FallFCS/d70a938c-e796-4f36-bf9a-cb235fedffba/iPad19,1,iPad19,2_27.2_24B8120_Restore.ipsw" type="application/x-ipsw" length="0" />
     </item>
   </channel>
 </rss>
